@@ -1,7 +1,7 @@
 # Examples of GIT Hooks
 
 ## Overview
-Git hooks are Git's in-built method of triggering scripts based on actions.
+Git hooks are Git's in-built method of triggering scripts based on actions. This repo's purpose is to provide an overview of the different types of git hooks and example use cases.
 
 ## Implementation
 Hooks are stored in .git/hooks folder. 
@@ -74,6 +74,9 @@ npm install husky --save-dev
 npx husky install
 ```
 
+You can then store hooks in .husky and they will automatically be installed the next time you run `npm i`. You can commit husky files directly with no need to copy them to the .git/hooks folder.  
+
 ## Resources
 
-- [Customizing Git - Git Hooks](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks)
+- [Customizing Git Hooks](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks)
+- [Git Repo - Git Hook Templates ](https://github.com/git/git/tree/master/templates/hooks)
