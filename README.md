@@ -1,0 +1,79 @@
+# Examples of GIT Hooks
+
+## Overview
+Git hooks are Git's in-built method of triggering scripts based on actions.
+
+## Implementation
+Hooks are stored in .git/hooks folder. 
+By default .git/hooks will be populated with example hooks, if you want to enable them:
+1. Remove the ".sample" suffix from the file name
+2. Make the hook executable using: `chmod +x .git/hooks/hook-name`
+3. Run `npm i` to install them
+
+## Examples
+### pre-commit
+Looks at staged code
+- formatting code
+- running linters
+- running unit tests
+- checking file size or lines of code (could enforce a per file limit)
+- blocking certain code (e.g console.log)
+
+### commit-msg
+Runs after commit command, can change the contents of a commit message.
+- Adding ticket number to commit msg
+- Enforcing commit message format - blocking vague messages (e.g. fix)
+
+Note: pre-commit and commit-msg can be bypassed with `git commit --no-verify`
+
+### pre-push
+Looks at all commits since the last push (not just the last staged)
+- run the app for test
+- check if secrets are staged for push
+
+### pre-merge-commit post-merge
+- notify team via slack
+
+## Committing Hooks
+
+Git hooks are ignored by default. If you want to commit them, follow these steps: 
+
+1. Create a `hooks/` directory in your repository to store the hooks:
+   ```bash
+   mkdir hooks
+   ```
+2. Move your hook scripts (e.g., commit-msg) to the hooks directory:
+   ```bash
+    mv .git/hooks/commit-msg hooks/
+    ```
+3. Add hooks to version control:
+   ```bash
+    git add hooks/commit-msg
+    git commit -m "Add commit-msg hook"
+    ```
+4. Create a setup-hooks.sh script to install the hooks:
+    ```bash
+    #!/bin/bash
+    cp hooks/* .git/hooks/
+    chmod +x .git/hooks/*
+    ```
+5. Make the script executable:
+    ```bash
+    chmod +x setup-hooks.sh
+    ```
+6. Run the script to install the hooks:
+    ```bash
+    ./setup-hooks.sh
+    ```
+
+## Alternative: Using Husky
+For Node.js projects, you can use [Husky](https://typicode.github.io/husky/) to manage Git hooks more easily. Husky automatically sets up Git hooks when you install it and manages them through your package.json. To install:
+
+```bash
+npm install husky --save-dev
+npx husky install
+```
+
+## Resources
+
+- [Customizing Git - Git Hooks](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks)
