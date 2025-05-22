@@ -73,25 +73,27 @@ Git hooks are ignored by default. If you want to commit them, follow these steps
     #!/bin/bash
     cp hooks/* .git/hooks/
     chmod +x .git/hooks/*
+    npm i
     ```
 5. Make the script executable:
     ```bash
     chmod +x setup-hooks.sh
     ```
-6. Run the script to install the hooks:
+6. Run the script:
     ```bash
     ./setup-hooks.sh
     ```
 
 ## Alternative: Using a Git Hook Manager (Husky)
-For Node.js projects, you can use [Husky](https://typicode.github.io/husky/) to manage Git hooks more easily. Husky automatically sets up Git hooks when you install it and manages them through your package.json. To install:
+For Node.js projects, you can use [Husky](https://typicode.github.io/husky/) to manage Git hooks more easily. Husky automatically sets up Git hooks when you install it and manages them through your package.json.
+To install and initialise husky in your project, run:
 
 ```bash
 npm install husky --save-dev
 npx husky install
 ```
 
-You can then store hooks in .husky and they will automatically be installed the next time you run `npm i`. You can commit husky files directly with no need to copy them to the .git/hooks folder.  
+You can then store hooks in .husky/hooks and they will be installed the next time you run `npm i`. You can commit husky files directly with no need to copy them to the .git/hooks folder.  
 
 ## Resources
 
