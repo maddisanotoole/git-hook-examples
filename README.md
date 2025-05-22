@@ -39,7 +39,8 @@ Add ticket numbers to commit messages if they are missing, prevents commits to b
 
 ![commit-msg example - include ticket number](screenshots/include-ticket-number.png)
 
-Note: pre-commit and commit-msg can be bypassed with `git commit --no-verify`
+> [!NOTE]
+> **pre-commit** and **commit-msg** hooks can be bypassed with `git commit --no-verify`
 
 ### pre-push
 Looks at all commits since the last push (not just the last staged)
@@ -82,7 +83,7 @@ Git hooks are ignored by default. If you want to commit them, follow these steps
     ./setup-hooks.sh
     ```
 
-## Alternative: Using Husky
+## Alternative: Using a Git Hook Manager (Husky)
 For Node.js projects, you can use [Husky](https://typicode.github.io/husky/) to manage Git hooks more easily. Husky automatically sets up Git hooks when you install it and manages them through your package.json. To install:
 
 ```bash
