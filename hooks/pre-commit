@@ -1,0 +1,30 @@
+#!/bin/sh
+# This script prevents committing if any staged files contain "console.log"
+# To enable this hook, move file to hooks/ folder and rename to "pre-commit".
+
+
+# get js & ts files staged for commit:
+files=$(git diff --cached --name-only --diff-filter=d | grep -E '\.(js|jsx|ts|tsx)$')
+
+if [ -z "$files" ]; then
+    exit 0
+fi
+
+# Search for console.log in staged files
+found_console_log=false
+for file in $files; do
+    line_numbers=$(git show ":$file" | grep -n "console.log" | cut -d: -f1)
+    if [ -n "$line_numbers" ]; then
+        formatted_lines=$(echo "$line_numbers" | tr '\n' ', ' | sed 's/, $//')
+        echo "❌ Found console.log in $file on lines: $formatted_lines"
+        found_console_log=true
+    fi
+done
+
+
+if [ "$found_console_log" = true ]; then
+    echo "Please remove console.log statements before committing"
+    exit 1
+fi
+
+exit 0

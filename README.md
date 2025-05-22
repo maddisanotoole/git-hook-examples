@@ -1,4 +1,4 @@
-# Examples of GIT Hooks
+# Examples of Git Hooks
 
 ## Overview
 Git hooks are Git's in-built method of triggering scripts based on actions. This repo's purpose is to provide an overview of the different types of git hooks and example use cases.
@@ -19,10 +19,17 @@ Looks at staged code
 - checking file size or lines of code (could enforce a per file limit)
 - blocking certain code (e.g console.log)
 
+[prevent-console-logs](hooks/examples/pre-commit.prevent-console-logs):
+Checks if any staged files contain "console.log", if so, cancels the commit and tells the user what file and line the log is on
+![pre-commit example - prevent console logs](screenshots/prevent-console-logs.png)
+
 ### commit-msg
 Runs after commit command, can change the contents of a commit message.
 - Adding ticket number to commit msg
 - Enforcing commit message format - blocking vague messages (e.g. fix)
+
+[include-ticket-number](hooks/examples/commit-msg.include-ticket-number):
+Add ticket numbers to commit messages if they are missing, prevents commits to branches without ticket numbers in their name. This means direct commits to master will be prevented. 
 
 Note: pre-commit and commit-msg can be bypassed with `git commit --no-verify`
 
