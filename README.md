@@ -12,17 +12,22 @@ By default .git/hooks will be populated with example hooks, if you want to enabl
 
 ## Examples
 ### pre-commit
-Looks at staged code
+Analyses staged code
+- blocking certain code (e.g console.log)
+- checking file size or lines of code exceeds limit
 - formatting code
 - running linters
 - running unit tests
-- checking file size or lines of code (could enforce a per file limit)
-- blocking certain code (e.g console.log)
 
 [prevent-console-logs](hooks/examples/pre-commit.prevent-console-logs):
 Checks if any staged files contain "console.log", if so, cancels the commit and tells the user what file and line the log is on.
 
 ![pre-commit example - prevent console logs](screenshots/prevent-console-logs.png)
+
+[limit-line-number](hooks/examples/pre-commit.limit-line-number):
+Checks if any staged files contain more than a specified line number, if so, cancels the commit and tells the user what files exceed the limit
+
+![pre-commit example - limit line number](screenshots/limit-line-number.png)
 
 ### commit-msg
 Runs after commit command, can change the contents of a commit message.
@@ -40,6 +45,7 @@ Note: pre-commit and commit-msg can be bypassed with `git commit --no-verify`
 Looks at all commits since the last push (not just the last staged)
 - run the app for test
 - check if secrets are staged for push
+
 
 ### pre-merge-commit post-merge
 - notify team via slack
