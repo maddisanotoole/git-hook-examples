@@ -20,7 +20,8 @@ Looks at staged code
 - blocking certain code (e.g console.log)
 
 [prevent-console-logs](hooks/examples/pre-commit.prevent-console-logs):
-Checks if any staged files contain "console.log", if so, cancels the commit and tells the user what file and line the log is on
+Checks if any staged files contain "console.log", if so, cancels the commit and tells the user what file and line the log is on.
+
 ![pre-commit example - prevent console logs](screenshots/prevent-console-logs.png)
 
 ### commit-msg
@@ -30,7 +31,8 @@ Runs after commit command, can change the contents of a commit message.
 
 [include-ticket-number](hooks/examples/commit-msg.include-ticket-number):
 Add ticket numbers to commit messages if they are missing, prevents commits to branches without ticket numbers in their name. This means direct commits to master will be prevented. 
-![commit-msg example - include ticket number](screenshots/prevent-console-logs.png)
+
+![commit-msg example - include ticket number](screenshots/include-ticket-number.png)
 
 Note: pre-commit and commit-msg can be bypassed with `git commit --no-verify`
 
