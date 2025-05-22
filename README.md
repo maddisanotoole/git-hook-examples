@@ -30,6 +30,7 @@ Runs after commit command, can change the contents of a commit message.
 
 [include-ticket-number](hooks/examples/commit-msg.include-ticket-number):
 Add ticket numbers to commit messages if they are missing, prevents commits to branches without ticket numbers in their name. This means direct commits to master will be prevented. 
+![commit-msg example - include ticket number](screenshots/prevent-console-logs.png)
 
 Note: pre-commit and commit-msg can be bypassed with `git commit --no-verify`
 
