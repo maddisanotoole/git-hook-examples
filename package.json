@@ -1,0 +1,9 @@
+{
+  "name": "git-hook-examples",
+  "version": "1.0.0",
+  "description": "Examples of git hooks",
+  "scripts": {
+    "setup": "./setup-hooks.sh"
+  },
+  "private": true
+}

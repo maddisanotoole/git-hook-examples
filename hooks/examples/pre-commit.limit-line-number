@@ -1,0 +1,27 @@
+#!/bin/sh
+# This script prevents files from being committed if they have more than a specified line number
+# To enable this hook, move file to hooks/ folder and rename to "pre-commit".
+
+# get js & ts files staged for commit:
+files=$(git diff --cached --name-only --diff-filter=d | grep -E '\.(js|jsx|ts|tsx)$')
+MAX_LINES=200
+if [ -z "$files" ]; then
+    exit 0
+fi
+
+# Check if staged file line numbers exceed the maximum allowed
+max_exceeded=false
+for file in $files; do
+    line_count=$(wc -l < "$file")
+    if [ $line_count -gt $MAX_LINES ]; then
+        echo "❌ File $file exceeds the maximum allowed lines."
+        max_exceeded=true
+    fi
+done
+
+if [ "$max_exceeded" = true ]; then
+    echo "Please refactor files to contain no more than $MAX_LINES lines."
+    exit 1
+fi
+
+exit 0
