@@ -1,3 +1,19 @@
+## Table of Contents
+
+1. [Examples of Git Hooks](#examples-of-git-hooks)
+2. [Overview](#overview)
+3. [Implementation](#implementation)
+4. [Different Types of Hooks](#different-types-of-hooks)
+   - [pre-commit](#pre-commit)
+   - [commit-msg](#commit-msg)
+   - [pre-push](#pre-push)
+   - [pre-merge-commit post-merge](#pre-merge-commit-post-merge)
+5. [Committing Hooks](#committing-hooks)
+6. [Manually tracking and installing hooks](#manually-tracking-and-installing-hooks)
+7. [Using a Git Hook Manager (Husky)](#using-a-git-hook-manager-husky)
+8. [Resources](#resources)
+
+
 # Examples of Git Hooks
 
 ## Overview
@@ -60,7 +76,9 @@ Example Use Cases:
 
 ## Committing Hooks
 
-Git hooks are ignored by default. If you want to commit them, follow these steps: 
+Git hooks are ignored by default. If you want to commit them, you can do so manually or use a git hook manager:
+
+## Manually tracking and installing hooks
 
 1. Create a `hooks/` directory in your repository to store the hooks:
    ```bash
@@ -95,9 +113,7 @@ Git hooks are ignored by default. If you want to commit them, follow these steps
 > }
 > ```
 
-
-
-## Alternative: Using a Git Hook Manager (Husky)
+## Using a Git Hook Manager (Husky)
 For Node.js projects, you can use [Husky](https://typicode.github.io/husky/) to manage Git hooks more easily. Husky automatically sets up Git hooks when you install it and manages them through your package.json.
 To install and initialise husky in your project, run:
 
@@ -106,7 +122,9 @@ npm install husky --save-dev
 npx husky install
 ```
 
-You can then store hooks in .husky/hooks and they will be installed the next time you run `npm i`. You can commit husky files directly with no need to copy them to the .git/hooks folder.  
+After installation, you can store hooks in the .husky/hooks directory. They will be installed the next time you run `npm i`. You can commit husky files directly with no need to copy them to the .git/hooks folder.  
+
+If your project is not based on Node.js, most runtime environments have Git hook managers tailored for them. For example, in Kotlin projects, you can use libraries like as Ktlint or plugins like Gradle's git-hooks plugin, which provide similar functionalities for managing hooks.
 
 ## Resources
 
