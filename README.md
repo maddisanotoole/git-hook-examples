@@ -66,30 +66,36 @@ Git hooks are ignored by default. If you want to commit them, follow these steps
    ```bash
    mkdir hooks
    ```
-2. Move your hook scripts (e.g., commit-msg) to the hooks directory:
-   ```bash
-    mv .git/hooks/commit-msg hooks/
-    ```
-3. Add hooks to version control:
+2. Add hooks to version control:
    ```bash
     git add hooks/commit-msg
     git commit -m "Add commit-msg hook"
     ```
-4. Create a setup-hooks.sh script to install the hooks:
+3. Create a setup-hooks.sh script to install the hooks:
     ```bash
     #!/bin/bash
     cp hooks/* .git/hooks/
     chmod +x .git/hooks/*
     npm i
     ```
-5. Make the script executable:
+4. Make the script executable:
     ```bash
     chmod +x setup-hooks.sh
     ```
-6. Run the script:
+5. Run the script:
     ```bash
     ./setup-hooks.sh
     ```
+> [!NOTE]
+> Optional: Add a script to your package.json, so you can run it with `npm run setup` instead
+> 
+> ```json
+> "scripts": {
+>   "setup": "./setup-hooks.sh"
+> }
+> ```
+
+
 
 ## Alternative: Using a Git Hook Manager (Husky)
 For Node.js projects, you can use [Husky](https://typicode.github.io/husky/) to manage Git hooks more easily. Husky automatically sets up Git hooks when you install it and manages them through your package.json.
