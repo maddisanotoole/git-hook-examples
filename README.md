@@ -1,23 +1,21 @@
-## Table of Contents
+# Examples of Git Hooks
+> [!WARNING]
+> This repo is a **work in progress**, More details and examples will be added. 
 
-1. [Examples of Git Hooks](#examples-of-git-hooks)
-2. [Overview](#overview)
-3. [Implementation](#implementation)
-4. [Different Types of Hooks](#different-types-of-hooks)
+## Overview
+Git hooks are Git's in-built method of triggering scripts based on actions. This repo's purpose is to provide an overview of the different types of git hooks and example use cases.
+
+## Table of Contents
+1. [Implementation](#implementation)
+2. [Different Types of Hooks](#different-types-of-hooks)
    - [pre-commit](#pre-commit)
    - [commit-msg](#commit-msg)
    - [pre-push](#pre-push)
    - [pre-merge-commit post-merge](#pre-merge-commit-post-merge)
-5. [Committing Hooks](#committing-hooks)
-6. [Manually tracking and installing hooks](#manually-tracking-and-installing-hooks)
-7. [Using a Git Hook Manager (Husky)](#using-a-git-hook-manager-husky)
-8. [Resources](#resources)
-
-
-# Examples of Git Hooks
-
-## Overview
-Git hooks are Git's in-built method of triggering scripts based on actions. This repo's purpose is to provide an overview of the different types of git hooks and example use cases.
+3. [Committing Hooks](#committing-hooks)
+4. [Manually tracking and installing hooks](#manually-tracking-and-installing-hooks)
+5. [Using a Git Hook Manager (Husky)](#using-a-git-hook-manager-husky)
+6. [Resources](#resources)
 
 ## Implementation
 Hooks are stored in .git/hooks folder. 
