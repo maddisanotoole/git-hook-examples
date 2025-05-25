@@ -14,7 +14,7 @@ max_exceeded=false
 for file in $files; do
     line_count=$(wc -l < "$file")
     if [ $line_count -gt $MAX_LINES ]; then
-        echo "File $file exceeds the maximum allowed lines."
+        echo "❌ File $file exceeds the maximum allowed lines."
         max_exceeded=true
     fi
 done

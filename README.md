@@ -10,9 +10,11 @@ By default .git/hooks will be populated with example hooks, if you want to enabl
 2. Make the hook executable using: `chmod +x .git/hooks/hook-name`
 3. Run `npm i` to install them
 
-## Examples
+## Different Types of Hooks
 ### pre-commit
 Analyses staged code
+
+Example Use Cases: 
 - blocking certain code (e.g console.log)
 - checking file size or lines of code exceeds limit
 - formatting code
@@ -31,6 +33,8 @@ Checks if any staged files contain more than a specified line number, if so, can
 
 ### commit-msg
 Runs after commit command, can change the contents of a commit message.
+
+Example Use Cases: 
 - Adding ticket number to commit msg
 - Enforcing commit message format - blocking vague messages (e.g. fix)
 
@@ -44,11 +48,15 @@ Add ticket numbers to commit messages if they are missing, prevents commits to b
 
 ### pre-push
 Looks at all commits since the last push (not just the last staged)
+
+Example Use Cases: 
 - run the app for test
 - check if secrets are staged for push
 
 
 ### pre-merge-commit post-merge
+
+Example Use Cases: 
 - notify team via slack
 
 ## Committing Hooks
