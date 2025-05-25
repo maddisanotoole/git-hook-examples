@@ -50,9 +50,8 @@ Add ticket numbers to commit messages if they are missing, prevents commits to b
 Looks at all commits since the last push (not just the last staged)
 
 Example Use Cases: 
-- run the app for test
+- run the app for testing
 - check if secrets are staged for push
-
 
 ### pre-merge-commit post-merge
 
