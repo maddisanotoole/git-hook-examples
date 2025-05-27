@@ -9,11 +9,11 @@ Git hooks are Git's in-built method of triggering scripts based on actions. This
 1. [Implementation](#implementation)
 2. [Different Types of Hooks](#different-types-of-hooks)
    - [Client-Side Hooks](#client-side-hooks)
-     - [pre-commit](#pre-commit)
-     - [commit-msg](#commit-msg)
-     - [pre-push](#pre-push)
+     - [pre-commit](#pre-commit-runs-before-every-commit)
+     - [commit-msg](#commit-msg-runs-after-commit-message-is-entered)
+     - [pre-push](#pre-push-runs-before-code-is-pushed-to-remote)
    - [Server-Side Hooks](#server-side-hooks)
-     - [pre-merge-commit and post-merge](#pre-merge-commit-and-post-merge)
+     - [pre-merge-commit and post-merge](#pre-merge-commit-and-post-merge-run-beforeafter-merges)
 3. [Committing Hooks](#committing-hooks)
 4. [Manually tracking and installing hooks](#manually-tracking-and-installing-hooks)
 5. [Using a Git Hook Manager (Husky)](#using-a-git-hook-manager-husky)
@@ -55,7 +55,7 @@ Checks if any staged files contain more than a specified line number, if so, can
 ![pre-commit example - limit line number](screenshots/limit-line-number.png)
 
 #### commit-msg (Runs after commit message is entered)
-Runs after commit command, can change the contents of a commit message. Ideal for maintaining commit message standards.
+Can change the contents of a commit message. Ideal for maintaining commit message standards.
 
 Example Use Cases: 
 - Adding ticket number to commit msg
