@@ -8,10 +8,12 @@ Git hooks are Git's in-built method of triggering scripts based on actions. This
 ## Table of Contents
 1. [Implementation](#implementation)
 2. [Different Types of Hooks](#different-types-of-hooks)
-   - [pre-commit](#pre-commit)
-   - [commit-msg](#commit-msg)
-   - [pre-push](#pre-push)
-   - [pre-merge-commit post-merge](#pre-merge-commit-post-merge)
+   - [Client-Side Hooks](#client-side-hooks)
+     - [pre-commit](#pre-commit)
+     - [commit-msg](#commit-msg)
+     - [pre-push](#pre-push)
+   - [Server-Side Hooks](#server-side-hooks)
+     - [pre-merge-commit and post-merge](#pre-merge-commit-and-post-merge)
 3. [Committing Hooks](#committing-hooks)
 4. [Manually tracking and installing hooks](#manually-tracking-and-installing-hooks)
 5. [Using a Git Hook Manager (Husky)](#using-a-git-hook-manager-husky)
@@ -25,15 +27,22 @@ By default .git/hooks will be populated with example hooks, if you want to enabl
 3. Run `npm i` to install them
 
 ## Different Types of Hooks
-### pre-commit
-Analyses staged code
+
+When choosing a Git hook, consider:
+- How frequently the hook will be triggered
+- How long the hook's operations will take to run
+- The impact on developer workflow
+- Whether the operation needs to run on every commit or can wait until push
+
+### Client-Side Hooks
+
+#### pre-commit (Runs before every commit)
+Analyses staged code. Best suited for quick checks that provide immediate feedback.
 
 Example Use Cases: 
 - blocking certain code (e.g console.log)
 - checking file size or lines of code exceeds limit
 - formatting code
-- running linters
-- running unit tests
 
 [prevent-console-logs](hooks/examples/pre-commit.prevent-console-logs):
 Checks if any staged files contain "console.log", if so, cancels the commit and tells the user what file and line the log is on.
@@ -45,8 +54,8 @@ Checks if any staged files contain more than a specified line number, if so, can
 
 ![pre-commit example - limit line number](screenshots/limit-line-number.png)
 
-### commit-msg
-Runs after commit command, can change the contents of a commit message.
+#### commit-msg (Runs after commit message is entered)
+Runs after commit command, can change the contents of a commit message. Ideal for maintaining commit message standards.
 
 Example Use Cases: 
 - Adding ticket number to commit msg
@@ -60,17 +69,25 @@ Add ticket numbers to commit messages if they are missing, prevents commits to b
 > [!NOTE]
 > **pre-commit** and **commit-msg** hooks can be bypassed with `git commit --no-verify`
 
-### pre-push
-Looks at all commits since the last push (not just the last staged)
+#### pre-push (Runs before code is pushed to remote)
+Looks at all commits since the last push. Best suited for time-consuming operations since pushing is less frequent than committing.
 
 Example Use Cases: 
-- run the app for testing
-- check if secrets are staged for push
+- Running comprehensive test suites
+- Checking for secrets or sensitive data
+- Running full codebase linting
+- Validating API documentation
 
-### pre-merge-commit post-merge
+### Server-Side Hooks
+
+#### pre-merge-commit and post-merge (Run before/after merges)
+These hooks are ideal for team-wide notifications and deployment preparations.
 
 Example Use Cases: 
-- notify team via slack
+- Notifying team via Slack/Teams
+- Triggering CI/CD pipelines
+- Updating documentation
+- Running deployment checks
 
 ## Committing Hooks
 
