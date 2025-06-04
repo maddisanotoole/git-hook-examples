@@ -34,6 +34,33 @@ When choosing a Git hook, consider:
 - The impact on developer workflow
 - Whether the operation needs to run on every commit or can wait until push
 
+Client side hooks are for operations that run on your local device (e.g. commit, rebase).
+Server side hooks are for network operations that interact with the remote Git server (e.g. push). 
+
+
+| Name             | Type        | Trigger           |
+|------------------|-------------|-------------------|
+| pre-commit       | client-side | git commit        |
+| commit-msg       | client-side | git commit        |
+| pre-push         | client-side | git push          |
+| pre-rebase       | client-side | git rebase        |
+| pre-merge-commit | server-side | before merge      |
+| post-merge       | server-side | after merge       |
+| pre-receive      | server-side | before push to remote |
+| update           | server-side | after push to remote  |
+| post-receive     | server-side | after push to remote  |
+| post-update      | server-side | after push to remote  |
+| pre-applypatch   | client-side | git am            |
+| applypatch-msg   | client-side | git am            |
+| post-applypatch  | client-side | git am            |
+| pre-commit       | client-side | git commit        |
+| prepare-commit-msg | client-side | git commit      |
+| post-commit      | client-side | git commit        |
+| pre-auto-gc      | client-side | git gc            |
+| post-rewrite     | client-side | git rebase/amend  |
+| pre-push         | client-side | git push          |
+| pre-push         | client-side | git push          |
+
 ### Client-Side Hooks
 
 #### pre-commit (Runs before every commit)
@@ -77,6 +104,7 @@ Example Use Cases:
 - Checking for secrets or sensitive data
 - Running full codebase linting
 - Validating API documentation
+- Preventing commits that start with "WIP"
 
 ### Server-Side Hooks
 
