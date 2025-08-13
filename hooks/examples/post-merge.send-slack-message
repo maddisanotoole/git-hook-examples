@@ -1,0 +1,24 @@
+#!/bin/sh
+
+# This script sends a slack message after merge
+
+target_branch=$(git rev-parse --abbrev-ref HEAD)
+merge_message=$(git log -1 --pretty=%B)
+
+source_branch=$(echo "$merge_message" | grep -oE "Merge branch '[^']+'" | sed "s/Merge branch '//;s/'//")
+if [ -z "$source_branch" ]; then
+    source_branch="unknown" ## If merge is a fast-forward merge, won't be able to extract source branch name
+fi
+
+message="$source_branch was merged into $target_branch"
+
+SLACK_WEBHOOK_URL="https://hooks.slack.com/services/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"
+
+payload=$(cat <<EOF
+{
+  "text": "$message"
+}
+EOF
+)
+
+curl -X POST -H 'Content-type: application/json' --data "$payload" "$SLACK_WEBHOOK_URL"
