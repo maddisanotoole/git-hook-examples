@@ -12,7 +12,7 @@ fi
 
 message="$source_branch was merged into $target_branch"
 
-SLACK_WEBHOOK_URL="https://hooks.slack.com/services/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"
+SLACK_WEBHOOK_URL="https://hooks.slack.com/services/REPLACEME"
 
 payload=$(cat <<EOF
 {
