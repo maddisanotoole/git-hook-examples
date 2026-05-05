@@ -1,8 +1,5 @@
 # Examples of Git Hooks
 
-> [!WARNING]
-> This repo is a **work in progress**, More details and examples will be added.
-
 ## Overview
 
 Git hooks are Git's in-built method of triggering scripts based on actions. This repo's purpose is to provide an overview of the different types of git hooks and example use cases.
