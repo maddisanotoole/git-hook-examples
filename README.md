@@ -167,7 +167,7 @@ Git hooks are ignored by default. If you want to commit them, you can do so manu
    >
    > ```json
    > "scripts": {
-   >   "setup": "./setup-hooks.sh"
+   >   "setup": "bash ./setup-hooks.sh"
    > }
    > ```
 
